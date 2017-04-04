@@ -1,10 +1,10 @@
 angular.module('myApp.view1')
 
-.directive('modalDialog', function() {
+.directive('inviteModalDialog', function() {
   return {
     restrict: 'E',
     scope: {
-      item: '=',
+      items: '=',
       show: '='
     },
     replace: true,
@@ -20,11 +20,11 @@ angular.module('myApp.view1')
         scope.show = false;
       };
 
-      scope.updateItemScore = function() {
-        scope.item.score = scope.newScore;
+      scope.addNewPerson = function() {
+        scope.items.push({"name" : scope.name, "score" : scope.score });
         scope.hideModal();
       };
     },
-    templateUrl: '/view1/modal.html'
+    templateUrl: '/view1/invite-modal.html'
   };
 });

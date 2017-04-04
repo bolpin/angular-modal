@@ -11,17 +11,18 @@ angular.module('myApp.view1', ['ngRoute'])
 
 .controller('View1Ctrl', ['$scope', function($scope) {
   $scope.modalShown = false;
+  $scope.inviteModalShown = false;
 
   $scope.items = [
-    {'value' : 0, 'name' : 'Professor Plum'},
-    {'value' : 0, 'name' : 'Mrs. Peacock'},
-    {'value' : 0, 'name' : 'Colonel Mustard'},
+    {'score' : 0, 'name' : 'Professor Plum'},
+    {'score' : 0, 'name' : 'Mrs. Peacock'},
+    {'score' : 0, 'name' : 'Colonel Mustard'},
   ];
 
   $scope.increment = function(index) {
     $scope.items[index].spinner = true;
     setTimeout(function() {
-      $scope.items[index].value++;
+      $scope.items[index].score++;
       $scope.items[index].spinner = false;
       $scope.$apply();
     }, 500);
@@ -32,8 +33,8 @@ angular.module('myApp.view1', ['ngRoute'])
     $scope.item = item;
   };
 
-  $scope.toggleModal = function() {
-    $scope.modalShown = !$scope.modalShown;
+  $scope.showInviteModal = function() {
+    $scope.inviteModalShown = true;
   };
 
 }]);

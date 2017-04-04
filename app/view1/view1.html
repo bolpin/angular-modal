@@ -1,13 +1,19 @@
 <p>Score keeper</p>
 
+<p>
+<button ng-click="showInviteModal()">Add Person</button>
+</p>
+
+
 <ul>
   <li ng-repeat="item in items">
     <button ng-click="increment($index)">Increment</button>
-    <button ng-click="showModal(item)">Set</button>
+    <button ng-click="showModal(item)">Edit</button>
     <span ng-if='!item.spinner'>
-      {{item.name}} : {{item.value}}</span>
+      {{item.name}} : {{item.score}}</span>
     <img ng-if='item.spinner' src='spinner.svg' height='20px' width='20px'></img>
   </li>
 </ul>
 
+<invite-modal-dialog show='inviteModalShown' width='750px' height='60%' items="items"></invite-modal-dialog>
 <modal-dialog show='modalShown' width='750px' height='60%' item='item'></modal-dialog>

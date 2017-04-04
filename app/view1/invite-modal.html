@@ -3,11 +3,18 @@
   <div class='ng-modal-dialog' ng-style='dialogStyle'>
     <div class='ng-modal-close' ng-click='hideModal()'>X</div>
     <div class='ng-modal-dialog-content' ng-transclude>
-      <form ng-submit='updateItemScore()' novalidate>
+      <form ng-submit='addNewPerson()' novalidate>
         <p>
-        {{ item }}
+          Invite someone
         </p>
-        <input type='numeric' ng-model='newScore'></input>
+        <p>
+        <label>Name<label>
+        <input type='name' ng-model='name'></input>
+        </p>
+        <p>
+        <label>Score<label>
+        <input type='numeric' ng-model='score'></input>
+        </p>
         <input type='submit'></input>
       </form>
     </div>
