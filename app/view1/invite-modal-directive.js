@@ -4,8 +4,9 @@ angular.module('myApp.view1')
   return {
     restrict: 'E',
     scope: {
+      show: '=',
       items: '=',
-      show: '='
+      errors: '='
     },
     replace: true,
     transclude: true, // we want to insert custom content inside the directive
@@ -21,7 +22,15 @@ angular.module('myApp.view1')
       };
 
       scope.addNewPerson = function() {
-        scope.items.push({"name" : scope.name, "score" : scope.score });
+        if (!scope.name) {
+          scope.errors.push("Missing name");
+        }
+        if (!scope.score) {
+          scope.errors.push("Missing score");
+        }
+        if (scope.name && scope.score) {
+          scope.items.push({"name" : scope.name, "score" : scope.score });
+        }
         scope.hideModal();
       };
     },
