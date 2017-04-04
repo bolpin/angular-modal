@@ -5,7 +5,7 @@
     <div class='ng-modal-dialog-content' ng-transclude>
       <form ng-submit='updateItemScore()' novalidate>
         <p>
-        {{ item }}
+        <label>Set the score for {{item.name}}</label>
         </p>
         <input type='numeric' ng-model='newScore'></input>
         <input type='submit'></input>
