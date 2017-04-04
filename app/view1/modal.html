@@ -1,0 +1,15 @@
+<div class='ng-modal' ng-show='show'>
+  <div class='ng-modal-overlay' ng-click='hideModal()'></div>
+  <div class='ng-modal-dialog' ng-style='dialogStyle'>
+    <div class='ng-modal-close' ng-click='hideModal()'>X</div>
+    <div class='ng-modal-dialog-content' ng-transclude>
+      <form ng-submit='updateItemValue()' novalidate>
+        <p>
+        {{ item }}
+        </p>
+        <input type='numeric' ng-model='newValue'></input>
+        <input type='submit'></input>
+      </form>
+    </div>
+  </div>
+</div>
