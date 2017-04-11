@@ -9,34 +9,14 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', ['$scope', function($scope) {
+.controller('View1Ctrl', ['$scope', 'peopleFactory', function($scope, peopleFactory) {
   $scope.modalShown = false;
   $scope.inviteModalShown = false;
   $scope.errors = [];
   $scope.pageSize = "5";
   $scope.currentPage = 0;
 
-  $scope.items = [
-    {'score' : 0, 'name' : 'Mrs. White'},
-    {'score' : 0, 'name' : 'Mr. Green'},
-    {'score' : 0, 'name' : 'Miss Scarlet'},
-    {'score' : 0, 'name' : 'Professor Plum'},
-    {'score' : 0, 'name' : 'Mrs. Peacock'},
-    {'score' : 0, 'name' : 'Colonel Mustard'},
-    {'score' : 0, 'name' : 'Agustus'},
-    {'score' : 0, 'name' : 'Nero'},
-    {'score' : 0, 'name' : 'Caligula'},
-    {'score' : 0, 'name' : 'Claudius'},
-    {'score' : 0, 'name' : 'Tiberius'},
-    {'score' : 0, 'name' : 'Trajan'},
-    {'score' : 0, 'name' : 'Commodus'},
-    {'score' : 0, 'name' : 'Domitian'},
-    {'score' : 0, 'name' : 'Publius Aelius Hadrianus'},
-    {'score' : 0, 'name' : 'Marcus Aurelius'},
-    {'score' : 0, 'name' : 'Vespasian'},
-    {'score' : 0, 'name' : 'Nerva'},
-    {'score' : 0, 'name' : 'Titus'},
-  ];
+  $scope.items = peopleFactory.getAll();
 
   $scope.resetErrors = function() {
     $scope.errors = [];
