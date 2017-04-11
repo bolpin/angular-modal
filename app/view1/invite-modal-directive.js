@@ -9,7 +9,7 @@ angular.module('myApp.view1')
       errors: '='
     },
     replace: true,
-    transclude: true, // we want to insert custom content inside the directive
+    transclude: true,
     link: function(scope, element, attrs) {
       scope.dialogStyle = {};
       if (attrs.width)

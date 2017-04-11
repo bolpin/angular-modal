@@ -5,10 +5,11 @@ angular.module('myApp.view1')
     restrict: 'E',
     scope: {
       item: '=',
-      show: '='
+      show: '=',
+      errors: '='
     },
     replace: true,
-    transclude: true, // we want to insert custom content inside the directive
+    transclude: true,
     link: function(scope, element, attrs) {
       scope.dialogStyle = {};
       if (attrs.width)
@@ -21,7 +22,11 @@ angular.module('myApp.view1')
       };
 
       scope.updateItemScore = function() {
-        scope.item.score = scope.newScore;
+        if (!scope.newScore) {
+          scope.errors.push("Missing score");
+        } else {
+          scope.item.score = scope.newScore;
+        }
         scope.hideModal();
       };
     },
