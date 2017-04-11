@@ -29,7 +29,8 @@ angular.module('myApp.view1')
           scope.errors.push("Missing score");
         }
         if (scope.name && scope.score) {
-          scope.items.push({"name" : scope.name, "score" : scope.score });
+          scope.items.unshift({"name" : scope.name, "score" : scope.score });
+          scope.$parent.currentPage = 0; // TODO: fix this
         }
         scope.hideModal();
       };
