@@ -30,9 +30,9 @@
 
 <ul>
   <li ng-repeat="player in players | startFrom:currentPage*pageSize | limitTo:pageSize">
-    <button ng-click="increment($index)">Increment</button>
+    <button ng-click="increment(player.name)">Increment</button>
     <button ng-click="showModal(player)">Edit</button>
-    <button ng-click="remove(players, $index)">Delete</button>
+    <button ng-click="remove(player.name)">Delete</button>
     <span ng-if='!player.spinner'>
       {{player.name}} - Score: {{player.score}}</span>
     <img ng-if='player.spinner' src='spinner.svg' height='20px' width='20px'></img>

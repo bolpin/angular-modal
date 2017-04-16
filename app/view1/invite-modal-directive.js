@@ -21,6 +21,10 @@ angular.module('myApp.view1')
         scope.show = false;
       };
 
+      function duplicateName(name){
+        return scope.players.findIndex(player => player.name==name) > -1;
+      };
+
       scope.addNewPerson = function() {
         if (!scope.name) {
           scope.errors.push("Missing name");
@@ -28,7 +32,10 @@ angular.module('myApp.view1')
         if (!scope.score) {
           scope.errors.push("Missing score");
         }
-        if (scope.name && scope.score) {
+        if (duplicateName(scope.name)) {
+          scope.errors.push(scope.name + " is already in the list");
+        }
+        else if (scope.name && scope.score) {
           scope.players.unshift({"name" : scope.name, "score" : scope.score });
           scope.$parent.currentPage = 0; // TODO: fix this
         }

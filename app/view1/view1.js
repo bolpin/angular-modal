@@ -32,10 +32,12 @@ angular.module('myApp.view1', ['ngRoute'])
     }
   }
 
-  $scope.remove = function(players, indexOnPage) {
+  $scope.remove = function(name) {
+    var players = $scope.players;
+
     $scope.resetErrors();
 
-    var index = indexOnPage + $scope.pageSize * $scope.currentPage;
+    var index = players.findIndex(player => player.name==name);
 
     players[index].spinner = true;
 
@@ -45,13 +47,14 @@ angular.module('myApp.view1', ['ngRoute'])
     }, 500);
   };
 
-  $scope.increment = function(indexOnPage) {
+  $scope.increment = function(name) {
+    var players = $scope.players;
     $scope.resetErrors();
-    var index = indexOnPage + $scope.pageSize * $scope.currentPage;
-    $scope.players[index].spinner = true;
+    var index = players.findIndex(player => player.name==name);
+    players[index].spinner = true;
     setTimeout(function() {
-      $scope.players[index].score++;
-      $scope.players[index].spinner = false;
+      players[index].score++;
+      players[index].spinner = false;
       $scope.$apply();
     }, 500);
   };
