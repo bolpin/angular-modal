@@ -1,10 +1,10 @@
 angular.module('myApp.view1')
 
-.directive('modalDialog', function() {
+.directive('editModalDialog', function() {
   return {
     restrict: 'E',
     scope: {
-      item: '=',
+      player: '=',
       show: '=',
       errors: '='
     },
@@ -21,15 +21,15 @@ angular.module('myApp.view1')
         scope.show = false;
       };
 
-      scope.updateItemScore = function() {
+      scope.updatePlayerScore = function() {
         if (!scope.newScore) {
           scope.errors.push("Missing score");
         } else {
-          scope.item.score = scope.newScore;
+          scope.player.score = scope.newScore;
         }
         scope.hideModal();
       };
     },
-    templateUrl: '/view1/modal.html'
+    templateUrl: '/view1/edit-modal.html'
   };
 });

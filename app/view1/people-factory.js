@@ -10,12 +10,6 @@ angular.module('myApp.view1')
   }
 
   var _names = [
-    'Mrs. White',
-    'Mr. Green',
-    'Miss Scarlet',
-    'Professor Plum',
-    'Mrs. Peacock',
-    'Colonel Mustard',
     'Agustus',
     'Nero',
     'Caligula',
@@ -27,8 +21,16 @@ angular.module('myApp.view1')
     'Publius Aelius Hadrianus',
     'Marcus Aurelius',
     'Vespasian',
-    'Nerva',
+    'Septimius Severus',
+    'Commodus',
+    'Publius Aelius Hadrianus',
+    'Elagabalus',
     'Titus',
+    'Nerva',
+    'Vitellius',
+    'Otho',
+    'Galba',
+    'Caracalla',
   ];
 
   var _nameToObj = function(name){

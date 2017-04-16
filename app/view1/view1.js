@@ -15,8 +15,11 @@ angular.module('myApp.view1', ['ngRoute'])
   $scope.errors = [];
   $scope.pageSize = "5";
   $scope.currentPage = 0;
+  $scope.sortType = "name";
+  $scope.sortReverse = false;
+  $scope.searchName = "";
 
-  $scope.items = peopleFactory.getAll();
+  $scope.players = peopleFactory.getAll();
 
   $scope.resetErrors = function() {
     $scope.errors = [];
@@ -29,15 +32,15 @@ angular.module('myApp.view1', ['ngRoute'])
     }
   }
 
-  $scope.remove = function(items, indexOnPage) {
+  $scope.remove = function(players, indexOnPage) {
     $scope.resetErrors();
 
     var index = indexOnPage + $scope.pageSize * $scope.currentPage;
 
-    items[index].spinner = true;
+    players[index].spinner = true;
 
     setTimeout(function() {
-      items.splice(index,1);
+      players.splice(index,1);
       $scope.$apply();
     }, 500);
   };
@@ -45,18 +48,18 @@ angular.module('myApp.view1', ['ngRoute'])
   $scope.increment = function(indexOnPage) {
     $scope.resetErrors();
     var index = indexOnPage + $scope.pageSize * $scope.currentPage;
-    $scope.items[index].spinner = true;
+    $scope.players[index].spinner = true;
     setTimeout(function() {
-      $scope.items[index].score++;
-      $scope.items[index].spinner = false;
+      $scope.players[index].score++;
+      $scope.players[index].spinner = false;
       $scope.$apply();
     }, 500);
   };
 
-  $scope.showModal = function(item) {
+  $scope.showModal = function(player) {
     $scope.resetErrors();
     $scope.modalShown = true;
-    $scope.item = item;
+    $scope.player = player;
   };
 
   $scope.showInviteModal = function() {
@@ -65,10 +68,14 @@ angular.module('myApp.view1', ['ngRoute'])
   };
 
   $scope.numberOfPages=function(){
-    return Math.ceil($scope.items.length/$scope.pageSize);
+    return Math.ceil($scope.players.length/$scope.pageSize);
   }
 
   $scope.$watch('pageSize', function(newValue,oldValue){
+    $scope.currentPage = 0;
+  },true);
+
+  $scope.$watch('search.name', function(newValue,oldValue){
     $scope.currentPage = 0;
   },true);
 

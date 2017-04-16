@@ -3,11 +3,11 @@
   <div class='ng-modal-dialog' ng-style='dialogStyle'>
     <div class='ng-modal-close' ng-click='hideModal()'>X</div>
     <div class='ng-modal-dialog-content' ng-transclude>
-      <form ng-submit='updateItemScore()' novalidate>
+      <form ng-submit='updatePlayerScore()' novalidate>
         <p>
-        <label>Set the score for {{item.name}}</label>
+        <label>Set the score for {{player.name}}</label>
         </p>
-        <input type='numeric' ng-model='newScore'></input>
+        <input type='numeric' ng-model='newScore' placeholder="Score"></input>
         <input type='submit'></input>
       </form>
     </div>

@@ -5,7 +5,7 @@ angular.module('myApp.view1')
     restrict: 'E',
     scope: {
       show: '=',
-      items: '=',
+      players: '=',
       errors: '='
     },
     replace: true,
@@ -29,7 +29,7 @@ angular.module('myApp.view1')
           scope.errors.push("Missing score");
         }
         if (scope.name && scope.score) {
-          scope.items.unshift({"name" : scope.name, "score" : scope.score });
+          scope.players.unshift({"name" : scope.name, "score" : scope.score });
           scope.$parent.currentPage = 0; // TODO: fix this
         }
         scope.hideModal();
